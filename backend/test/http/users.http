@@ -1,0 +1,54 @@
+@baseUrl = http://localhost:8080/api
+@contentType = application/json
+
+### ユーザー作成
+POST {{baseUrl}}/users
+Content-Type: {{contentType}}
+
+{
+  "name": "John Doe",
+  "email": "john13@example.com",
+  "password": "Password123!"
+}
+
+### 全ユーザー取得
+GET {{baseUrl}}/users
+
+### 特定のユーザー取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/users/1
+
+### ユーザー更新（IDを適切な値に変更してください）
+PATCH {{baseUrl}}/users/1
+Content-Type: {{contentType}}
+
+{
+  "name": "John Updated",
+  "email": "john.updated@example.com"
+}
+
+### ユーザー削除（IDを適切な値に変更してください）
+DELETE {{baseUrl}}/users/1
+
+### 新しいユーザー作成（アバターアップロードテスト用）
+POST {{baseUrl}}/users
+Content-Type: {{contentType}}
+
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "password": "Password456!"
+}
+
+### アバターアップロード（IDを適切な値に変更してください）
+POST {{baseUrl}}/users/6/avatar
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="avatar.jpg"
+Content-Type: image/jpeg
+
+< ./avatar.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### アバターがアップロードされたユーザーの取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/users/5

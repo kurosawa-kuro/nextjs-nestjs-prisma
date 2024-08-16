@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:8080/api
+
+### Register a new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john7@example.com",
+  "password": "password123",
+  "passwordConfirm": "password123"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "john5@example.com",
+  "password": "password123"
+}
+
+### Get current user (requires authentication)
+GET {{baseUrl}}/auth/user
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzIzNDQzNzQ5LCJleHAiOjE3MjM1MzAxNDl9.y8vGlrRb6Z0_PGRPFYOaAAyNWSJ80baHJwodWzsvzAs
+
+### Logout (requires authentication)
+POST {{baseUrl}}/auth/logout
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzIzNDQzNzQ5LCJleHAiOjE3MjM1MzAxNDl9.y8vGlrRb6Z0_PGRPFYOaAAyNWSJ80baHJwodWzsvzAs
+
+### Get all users
+GET {{baseUrl}}/users
+
+### Get a specific user
+GET {{baseUrl}}/users/1
+
+### Update a user
+PATCH {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "name": "Updated Name"
+}
+
+### Delete a user
+DELETE {{baseUrl}}/users/1
+
+### Upload user avatar
+POST {{baseUrl}}/users/1/avatar
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="avatar.png"
+Content-Type: image/png
+
+< ./path/to/your/avatar.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

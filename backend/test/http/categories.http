@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:8080/api
+@contentType = application/json
+
+### Category作成
+POST {{baseUrl}}/categories
+Content-Type: {{contentType}}
+
+{
+  "title": "買い物3"
+}
+
+### 全Category取得
+GET {{baseUrl}}/categories
+
+### 特定のCategory取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/categories/1
+
+### Category更新（IDを適切な値に変更してください）
+PUT {{baseUrl}}/categories/1
+Content-Type: {{contentType}}
+
+{
+  "title": "日用品の買い物"
+}
+
+### Category削除（IDを適切な値に変更してください）
+DELETE {{baseUrl}}/categories/1
+
+### 新しいCategory作成（削除テスト用）
+POST {{baseUrl}}/categories
+Content-Type: {{contentType}}
+
+{
+  "title": "家事"
+}
+
+### カテゴリーと関連するTodoを取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/categories/1/todos

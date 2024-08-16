@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:8080/api
+@contentType = application/json
+
+### TodoをCategoryに追加
+POST {{baseUrl}}/category-todo
+Content-Type: {{contentType}}
+
+{
+  "todoId": 1,
+  "categoryId": 1
+}
+
+### TodoをCategoryから削除（IDを適切な値に変更してください）
+DELETE {{baseUrl}}/category-todo/1/1
+
+### 特定のCategoryに関連するTodoを取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/category-todo/category/1
+
+### 特定のTodoに関連するCategoryを取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/category-todo/todo/1
+
+### Category作成（参考用）
+POST {{baseUrl}}/categories
+Content-Type: {{contentType}}
+
+{
+  "title": "買い物"
+}
+
+### Todo作成（参考用）
+POST {{baseUrl}}/todos
+Content-Type: {{contentType}}
+
+{
+  "userId": 1,
+  "title": "牛乳を買う"
+}
+
+### 全Category取得（参考用）
+GET {{baseUrl}}/categories
+
+### 全Todo取得（参考用）
+GET {{baseUrl}}/todos

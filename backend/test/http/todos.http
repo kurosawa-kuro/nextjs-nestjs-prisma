@@ -1,0 +1,37 @@
+@baseUrl = http://localhost:8080
+@contentType = application/json
+
+### Todo作成
+POST {{baseUrl}}/todos
+Content-Type: {{contentType}}
+
+{
+  "userId": 1,
+  "title": "買い物に行く"
+}
+
+### 全Todo取得
+GET {{baseUrl}}/todos
+
+### 特定のTodo取得（IDを適切な値に変更してください）
+GET {{baseUrl}}/todos/1
+
+### Todo更新（IDを適切な値に変更してください）
+PUT {{baseUrl}}/todos/1
+Content-Type: {{contentType}}
+
+{
+  "title": "買い物リストを作成する"
+}
+
+### Todo削除（IDを適切な値に変更してください）
+DELETE {{baseUrl}}/todos/1
+
+### 新しいTodo作成（削除テスト用）
+POST {{baseUrl}}/todos
+Content-Type: {{contentType}}
+
+{
+  "userId": 1,
+  "title": "掃除をする"
+}

@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  avatar    String?
+  role      String   @default("user")
+  todos     Todo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Todo {
+  id         Int           @id @default(autoincrement())
+  title      String
+  user       User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     Int
+  categories CategoryTodo[]
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+}
+
+model Category {
+  id    Int           @id @default(autoincrement())
+  title String        @unique
+  todos CategoryTodo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CategoryTodo {
+  todo       Todo     @relation(fields: [todoId], references: [id])
+  todoId     Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  @@id([todoId, categoryId])
+}
